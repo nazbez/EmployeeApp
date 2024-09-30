@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>14cf79e1-9685-4558-9dc1-ace390a307fc</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EmployeeApp.Backend.AppCore\EmployeeApp.Backend.AppCore.csproj" />
+    <ProjectReference Include="..\EmployeeApp.Backend.Infrastructure\EmployeeApp.Backend.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
