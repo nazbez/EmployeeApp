@@ -5,6 +5,7 @@ import { PaginatedEmployeeListResponseModel } from "../models/paginated-employee
 import { environment } from "../../../environments/environment";
 import { EmployeeUpsertDataResponseModel } from "../models/employee-upsert-data-response.model";
 import { EmployeeUpsertRequestModel } from "../models/employee-upsert-request.model";
+import { EmployeeDataResponseModel } from "../models/employee-data-response.model";
 
 @Injectable({
     providedIn: 'root'
@@ -20,6 +21,10 @@ export class EmployeeService {
 
     public getUpsertData(): Observable<EmployeeUpsertDataResponseModel> {
         return this.httpClient.get<EmployeeUpsertDataResponseModel>(`${this.url}/upsert-data`);
+    }
+
+    public getById(id: number): Observable<EmployeeDataResponseModel> {
+        return this.httpClient.get<EmployeeDataResponseModel>(`${this.url}/${id}`);
     }
     
     public create(requestModel: EmployeeUpsertRequestModel): Observable<object> {

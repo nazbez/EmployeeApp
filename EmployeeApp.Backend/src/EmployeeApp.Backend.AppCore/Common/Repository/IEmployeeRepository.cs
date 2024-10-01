@@ -12,4 +12,5 @@ public interface IEmployeeRepository
     Task DeleteAsync(int id);
     Task<bool> IsManagerAsync(int id);
     Task<List<EmployeeEntity>> GetAllAsync();
+    Task<EmployeeEntity> GetByIdAsync(int id);
 }

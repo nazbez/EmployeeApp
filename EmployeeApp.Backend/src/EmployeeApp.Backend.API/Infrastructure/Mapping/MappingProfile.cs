@@ -3,7 +3,6 @@ using EmployeeApp.Backend.API.Infrastructure.Models.Employee;
 using EmployeeApp.Backend.AppCore.Common.Models.Department;
 using EmployeeApp.Backend.AppCore.Common.Models.Employee;
 using EmployeeApp.Backend.AppCore.Employee.Commands;
-using EmployeeApp.Backend.AppCore.Employee.Commands.Validators;
 using System.Diagnostics.CodeAnalysis;
 
 namespace EmployeeApp.Backend.API.Infrastructure.Mapping;
@@ -26,5 +25,7 @@ public class MappingProfile : Profile
         CreateMap<ManagerDto, ManagerVm>();
 
         CreateMap<EmployeeUpsertDataDto, EmployeeUpsertDataResponseModel>();
+
+        CreateMap<EmployeeDataDto, EmployeeDataResponseModel>();
     }
 }

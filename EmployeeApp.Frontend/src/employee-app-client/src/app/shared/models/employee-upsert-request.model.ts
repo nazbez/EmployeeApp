@@ -3,5 +3,5 @@ export interface EmployeeUpsertRequestModel {
     surname: string;
     salary: number;
     managerId: number;
-    department: number;
+    departmentId: number;
 }

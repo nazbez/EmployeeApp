@@ -1,4 +1,5 @@
 ﻿using EmployeeApp.Backend.AppCore.Common.Repository;
+using EmployeeApp.Backend.AppCore.Employee.Validators;
 using FluentValidation;
 using System.Diagnostics.CodeAnalysis;
 

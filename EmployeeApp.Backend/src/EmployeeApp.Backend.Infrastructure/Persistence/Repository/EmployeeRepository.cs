@@ -69,4 +69,11 @@ public class EmployeeRepository : IEmployeeRepository
     {
         return applicationDbContext.Employees.AsNoTracking().ToListAsync();
     }
+
+    public Task<Employee> GetByIdAsync(int id)
+    {
+        return applicationDbContext.Employees.Include(x => x.Department)
+           .Include(x => x.Manager)
+           .FirstAsync(x => x.Id == id);
+    }
 }

@@ -2,7 +2,7 @@
 using FluentValidation;
 using System.Diagnostics.CodeAnalysis;
 
-namespace EmployeeApp.Backend.AppCore.Employee.Commands.Validators;
+namespace EmployeeApp.Backend.AppCore.Employee.Validators;
 
 [ExcludeFromCodeCoverage]
 public class EmployeeExistsValidator : AbstractValidator<int>

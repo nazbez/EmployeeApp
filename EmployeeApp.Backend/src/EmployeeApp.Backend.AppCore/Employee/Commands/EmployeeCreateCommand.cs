@@ -9,9 +9,9 @@ public record EmployeeCreateCommand(
     string Surname,
     int DepartmentId,
     int ManagerId,
-    decimal Salary) : IRequest<Unit>
+    decimal Salary) : IRequest<int>
 {
-    public class EmployeeCreateCommandHandler : IRequestHandler<EmployeeCreateCommand, Unit>
+    public class EmployeeCreateCommandHandler : IRequestHandler<EmployeeCreateCommand, int>
     {
         private readonly IEmployeeRepository employeeRepository;
 
@@ -20,7 +20,7 @@ public record EmployeeCreateCommand(
             this.employeeRepository = employeeRepository;
         }
 
-        public Task<Unit> Handle(EmployeeCreateCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(EmployeeCreateCommand request, CancellationToken cancellationToken)
         {
             var employee = new EmployeeEntity
             {
@@ -30,9 +30,7 @@ public record EmployeeCreateCommand(
                 Salary = request.Salary
             };
 
-            employeeRepository.CreateAsync(employee);
-
-            return Task.FromResult(Unit.Value);
+            return await employeeRepository.CreateAsync(employee);
         }
     }
 }

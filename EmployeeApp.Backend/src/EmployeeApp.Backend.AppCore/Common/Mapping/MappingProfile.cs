@@ -29,5 +29,9 @@ public class MappingProfile : Profile
         CreateMap<EmployeeUpdateCommand, EmployeeUpsertCommandValidatedModel>();
 
         CreateMap<EmployeeEntity, ManagerDto>();
+
+        CreateMap<EmployeeEntity, EmployeeDataDto>()
+            .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name.Split(" ", StringSplitOptions.RemoveEmptyEntries)[0]))
+            .ForMember(dest => dest.Surname, opt => opt.MapFrom(src => src.Name.Split(" ", StringSplitOptions.RemoveEmptyEntries)[1]));
     }
 }

@@ -34,6 +34,20 @@ public class EmployeeController : ControllerBase
         return Ok(response);
     }
 
+    [HttpGet("{id:int}")]
+    [ProducesResponseType(typeof(EmployeeDataResponseModel), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> GetById(int id)
+    {
+        var query = new EmployeeGetByIdQuery(id);
+
+        var result = await mediator.Send(query);
+
+        var response = mapper.Map<EmployeeDataResponseModel>(result);
+
+        return Ok(response);
+    }
+
     [HttpGet("upsert-data")]
     [ProducesResponseType(typeof(EmployeeUpsertDataResponseModel), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -55,7 +69,7 @@ public class EmployeeController : ControllerBase
     {
         var command = mapper.Map<EmployeeCreateCommand>(requestModel);
 
-        await mediator.Send(command);
+        var result = await mediator.Send(command);
 
         return Created();
     }

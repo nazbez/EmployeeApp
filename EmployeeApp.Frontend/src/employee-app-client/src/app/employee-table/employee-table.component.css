@@ -23,3 +23,26 @@ tr:nth-child(even) {
 .mat-paginator {
     margin-top: 16px;
 }
+
+.mat-header-cell, .mat-cell {
+    flex: 1 1 auto;
+    text-align: left;
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+.mat-header-cell {
+    font-weight: bold;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.ps-5 {
+    padding-left: 16px;
+}
+
+.delete-link {
+    color: red;
+}

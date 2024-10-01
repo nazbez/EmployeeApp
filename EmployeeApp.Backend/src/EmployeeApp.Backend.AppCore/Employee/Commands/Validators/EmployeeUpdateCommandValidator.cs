@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using EmployeeApp.Backend.AppCore.Employee.Validators;
 using FluentValidation;
 using System.Diagnostics.CodeAnalysis;
 
@@ -13,9 +14,11 @@ public class EmployeeUpdateCommandValidator : AbstractValidator<EmployeeUpdateCo
         EmployeeUpsertCommandValidator employeeUpsertCommandValidator)
     {
         RuleFor(cmd => cmd.Id)
-            .SetValidator(employeeExistsValidator);
-
-        RuleFor(cmd => mapper.Map<EmployeeUpsertCommandValidatedModel>(cmd))
-            .SetValidator(employeeUpsertCommandValidator);
+            .SetValidator(employeeExistsValidator)
+            .DependentRules(() =>
+            {
+                RuleFor(cmd => mapper.Map<EmployeeUpsertCommandValidatedModel>(cmd))
+                    .SetValidator(employeeUpsertCommandValidator);
+            });
     }
 }
