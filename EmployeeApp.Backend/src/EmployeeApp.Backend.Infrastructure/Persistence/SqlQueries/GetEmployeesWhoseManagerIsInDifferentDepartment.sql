@@ -2,8 +2,7 @@
 Show all employees whose manager is in a different department
 */
 
-SELECT 
-	e.ID,
+SELECT e.ID,
 	e.Name,
 	e.Salary,
 	e.ManagerID,

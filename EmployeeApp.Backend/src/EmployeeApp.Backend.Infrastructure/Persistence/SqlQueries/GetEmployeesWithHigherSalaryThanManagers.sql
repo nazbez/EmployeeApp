@@ -2,8 +2,7 @@
 Show all employees whose salary is higher than their manager's salary
 */
 
-SELECT 
-	e.ID,
+SELECT e.ID,
 	e.Name,
 	e.Salary,
 	e.ManagerID,

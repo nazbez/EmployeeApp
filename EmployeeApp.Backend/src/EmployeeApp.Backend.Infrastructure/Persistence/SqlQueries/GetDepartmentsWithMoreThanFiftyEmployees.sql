@@ -2,8 +2,7 @@
 Show departments with more than 50 employees
 */
 
-SELECT 
-	DepartmentID, 
+SELECT DepartmentID, 
 	COUNT(*) AS EmployeeCount
 FROM [dbo].[Employee]
 GROUP BY DepartmentID

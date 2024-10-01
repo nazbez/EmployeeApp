@@ -3,8 +3,7 @@ Show the employee with the highest salary in each department
 */
 
 WITH RankedSalaries AS (
-    SELECT
-        ID,
+    SELECT ID,
         Name,
         Salary,
         DepartmentID,
@@ -12,8 +11,7 @@ WITH RankedSalaries AS (
         ROW_NUMBER() OVER (PARTITION BY DepartmentId ORDER BY Salary DESC) AS Rank
     FROM [dbo].[Employee]
 )
-SELECT 
-	ID,
+SELECT ID,
 	Name,
 	Salary,
 	DepartmentID,
