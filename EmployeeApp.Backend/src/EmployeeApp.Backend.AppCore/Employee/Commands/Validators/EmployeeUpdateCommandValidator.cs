@@ -19,6 +19,10 @@ public class EmployeeUpdateCommandValidator : AbstractValidator<EmployeeUpdateCo
             {
                 RuleFor(cmd => mapper.Map<EmployeeUpsertCommandValidatedModel>(cmd))
                     .SetValidator(employeeUpsertCommandValidator);
+
+                RuleFor(cmd => cmd)
+                    .Must(cmd => cmd.Id != cmd.ManagerId)
+                    .WithMessage("Employee cannot be a manager of himself");
             });
     }
 }

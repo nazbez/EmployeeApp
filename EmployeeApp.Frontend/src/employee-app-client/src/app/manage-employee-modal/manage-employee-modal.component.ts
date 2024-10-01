@@ -105,9 +105,13 @@ export class ManageEmployeeModalComponent implements OnInit {
     };
 
     this.employeeService.update(this.employeeId, upsertRequest)
-      .subscribe(res => {
-        this.toastr.success('Employee is added!', 'Success!');
-        this.dialogRef.close(res);
+      .subscribe({
+        next: res => {
+          this.toastr.success('Employee is updated!', 'Success!');
+          this.dialogRef.close(res);
+        }, error: error => {
+          this.toastr.error(error.error[0]['ErrorMessage'], 'Error!');
+        }
       });
   }
 
@@ -122,9 +126,13 @@ export class ManageEmployeeModalComponent implements OnInit {
     };
 
     this.employeeService.create(upsertRequest)
-      .subscribe(res => {
-        this.toastr.success('Employee is added!', 'Success!');
-        this.dialogRef.close(res);
+      .subscribe({
+        next: res => {
+          this.toastr.success('Employee is added!', 'Success!');
+          this.dialogRef.close(res);
+        }, error: error => {
+          this.toastr.error(error.error[0]['ErrorMessage'], 'Error!');
+        }
       });
   }
 }
