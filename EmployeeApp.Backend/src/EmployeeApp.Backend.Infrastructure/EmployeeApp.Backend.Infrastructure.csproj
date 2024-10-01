@@ -7,6 +7,38 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Persistence\SqlQueries\GetDepartmentsWithMoreThanFiftyEmployees.sql" />
+    <None Remove="Persistence\SqlQueries\GetDepartmetnWithHighestSalarySum.sql" />
+    <None Remove="Persistence\SqlQueries\GetEmployeesWhoseManagerIsInDifferentDepartment.sql" />
+    <None Remove="Persistence\SqlQueries\GetEmployeesWithHigherSalaryThanManagers.sql" />
+    <None Remove="Persistence\SqlQueries\GetEmployeeWithHighestSalaryInEachDepartment.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Persistence\SqlQueries\GetDepartmetnWithHighestSalarySum.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Persistence\SqlQueries\GetDepartmentsWithMoreThanFiftyEmployees.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Persistence\SqlQueries\GetEmployeesWhoseManagerIsInDifferentDepartment.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Persistence\SqlQueries\GetEmployeesWithHigherSalaryThanManagers.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Persistence\SqlQueries\GetEmployeeWithHighestSalaryInEachDepartment.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.8" />
   </ItemGroup>
 
