@@ -27,4 +27,8 @@ git clone https://github.com/nazbez/EmployeeApp.git
 
 ## SQL Tasks
 
-Solutions to sql tasks can be found in [folder](https://github.com/nazbez/EmployeeApp/tree/main/EmployeeApp.Backend/src/EmployeeApp.Backend.Infrastructure/Persistence/SqlQueries)
+Solutions to sql tasks can be found in [folder](https://github.com/nazbez/EmployeeApp/tree/main/EmployeeApp.Backend/src/EmployeeApp.Backend.Infrastructure/Persistence/SqlQueries).
+
+## Demo
+
+A demonstration of the application can be viewed at [link](https://drive.google.com/file/d/1jm2fE_6cIFZ6rdg3ZHBA77cN0gj_zp0s/view?usp=drive_link).
