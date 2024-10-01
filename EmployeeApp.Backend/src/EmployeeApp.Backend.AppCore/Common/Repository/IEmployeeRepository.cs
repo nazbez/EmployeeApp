@@ -1,4 +1,4 @@
-﻿using EmployeeApp.Backend.AppCore.Common.Models;
+﻿using EmployeeApp.Backend.AppCore.Common.Models.Employee;
 
 namespace EmployeeApp.Backend.AppCore.Common.Repository;
 

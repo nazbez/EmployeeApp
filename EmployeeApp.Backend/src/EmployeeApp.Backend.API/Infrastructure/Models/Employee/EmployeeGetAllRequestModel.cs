@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace EmployeeApp.Backend.API.Infrastructure.Models;
+namespace EmployeeApp.Backend.API.Infrastructure.Models.Employee;
 
 [ExcludeFromCodeCoverage]
 public class EmployeeGetAllRequestModel

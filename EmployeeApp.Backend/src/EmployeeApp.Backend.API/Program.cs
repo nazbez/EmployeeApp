@@ -1,5 +1,7 @@
+using EmployeeApp.Backend.API.Infrastructure.Extensions;
 using EmployeeApp.Backend.AppCore;
 using EmployeeApp.Backend.Infrastructure;
+using Serilog;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,12 +16,15 @@ builder.Configuration
 
 var configuration = builder.Configuration;
 
-// Add services to the container.
+builder.Host.UseSerilog((context, config) =>
+    config.ReadFrom.Configuration(context.Configuration));
 
+// Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddAutoMapper(assembly);
 builder.Services.AddAppCore(configuration);
 builder.Services.AddInfrastructure(configuration);
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -33,9 +38,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseSerilogRequestLogging();
+
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
+app.UseFluentValidationExceptionHandler();
 
 app.MapControllers();
 

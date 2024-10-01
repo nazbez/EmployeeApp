@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using EmployeeEntity = EmployeeApp.Backend.Domain.Entities.Employee;
 
-namespace EmployeeApp.Backend.AppCore.Common.Models;
+namespace EmployeeApp.Backend.AppCore.Common.Models.Employee;
 
 [ExcludeFromCodeCoverage]
 public class PaginatedEmployeeListDbModel

@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
-using EmployeeApp.Backend.API.Infrastructure.Models;
-using EmployeeApp.Backend.AppCore.Common.Models;
+using EmployeeApp.Backend.API.Infrastructure.Models.Department;
+using EmployeeApp.Backend.API.Infrastructure.Models.Employee;
+using EmployeeApp.Backend.AppCore.Common.Models.Department;
+using EmployeeApp.Backend.AppCore.Common.Models.Employee;
 using System.Diagnostics.CodeAnalysis;
 
 namespace EmployeeApp.Backend.API.Infrastructure.Mapping;
@@ -13,5 +15,7 @@ public class MappingProfile : Profile
         CreateMap<EmployeeDto, EmployeeVm>();
 
         CreateMap<PaginatedEmployeeListDto, PaginatedEmployeeListResponse>();
+
+        CreateMap<DepartmentDto, DepartmentVm>();
     }
 }

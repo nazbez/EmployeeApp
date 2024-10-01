@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using EmployeeApp.Backend.API.Infrastructure.Models;
+using EmployeeApp.Backend.API.Infrastructure.Models.Employee;
 using EmployeeApp.Backend.AppCore.Employee.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

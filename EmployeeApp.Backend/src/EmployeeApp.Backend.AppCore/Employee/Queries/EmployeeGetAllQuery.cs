@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using EmployeeApp.Backend.AppCore.Common.Models;
+using EmployeeApp.Backend.AppCore.Common.Models.Employee;
 using EmployeeApp.Backend.AppCore.Common.Repository;
 using MediatR;
 

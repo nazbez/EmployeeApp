@@ -1,11 +1,11 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace EmployeeApp.Backend.API.Infrastructure.Models;
+namespace EmployeeApp.Backend.AppCore.Common.Models.Employee;
 
 [ExcludeFromCodeCoverage]
-public class PaginatedEmployeeListResponse
+public class PaginatedEmployeeListDto
 {
-    public IReadOnlyCollection<EmployeeVm> Items { get; set; } = [];
+    public IReadOnlyCollection<EmployeeDto> Items { get; set; } = [];
     public int PageNumber { get; set; }
     public int TotalPages { get; set; }
     public int TotalCount { get; set; }

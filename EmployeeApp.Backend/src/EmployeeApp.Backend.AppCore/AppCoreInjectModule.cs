@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using EmployeeApp.Backend.AppCore.Common.Behaviours;
+using FluentValidation;
+using MediatR;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
@@ -18,5 +21,10 @@ public static class AppCoreInjectModule
         {
             cfg.RegisterServicesFromAssembly(assembly);
         });
+
+        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviour<,>));
+
+        services.AddValidatorsFromAssembly(assembly);
     }
 }

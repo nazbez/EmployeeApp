@@ -19,5 +19,6 @@ public static class InfrastructureInjectModule
             options.UseSqlServer(connectionString));
 
         services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+        services.AddScoped<IDepartmentRepository, DepartmentRepository>();
     }
 }
