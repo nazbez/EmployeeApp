@@ -1,9 +1,11 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
 namespace EmployeeApp.Backend.AppCore.Common.Behaviours;
 
+[ExcludeFromCodeCoverage]
 public class LoggingBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     where TRequest : IRequest<TResponse>
 {

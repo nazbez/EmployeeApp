@@ -1,0 +1,49 @@
+<div class="d-flex justify-content-between align-items-center mt-2 mx-2 position-relative h-48">
+    <div class="d-flex justify-content-center w-100">
+        <h4 class="m-0 mt-2">{{isUpdating ? "Edit employee" : "Add employee"}}</h4>
+    </div>
+    <div class="close-button-box">
+        <button mat-icon-button [mat-dialog-close]="true">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+</div>
+
+<div class="text-center form-container">
+    <form [formGroup]="employeeFormGroup" autocomplete="off" novalidate (ngSubmit)="save(employeeFormGroup.value)">
+        <div mat-dialog-content>
+            <div class="mb-3 row justify-content-center">
+                <input type="text" id="name" formControlName="name" class="form-control" placeholder="Name" />
+                <em *ngIf="validateControl('name') && hasError('name', 'required')" class="error-message">Name is required</em>
+            </div>
+            <div class="mb-3 row justify-content-center">
+                <input type="text" id="surname" formControlName="surname" class="form-control" placeholder="Surname" />
+                <em *ngIf="validateControl('surname') && hasError('surname', 'required')" class="error-message">Surname is required</em>
+            </div>
+            <div class="mb-3 row justify-content-center">
+                <input type="number" id="salary" formControlName="salary" step="1" oninput="validity.valid||(value='');" class="form-control" placeholder="Salary" />
+                <em *ngIf="validateControl('salary') && hasError('salary', 'required')" class="error-message">Salary is required</em>
+            </div>
+            <div class="mb-3 row justify-content-center">
+                <mat-select placeholder="Manager" formControlName="manager" class="form-control">
+                    <mat-option *ngFor="let m of managers" [value]="m.id">
+                        {{m.name}}
+                    </mat-option>
+                </mat-select>
+                <em *ngIf="validateControl('manager') && hasError('manager', 'required')" class="error-message">Manager is required</em>
+            </div>
+            <div class="mb-3 row justify-content-center">
+                <mat-select placeholder="Department" formControlName="department" class="form-control">
+                    <mat-option *ngFor="let d of departments" [value]="d.id">
+                        {{d.name}}
+                    </mat-option>
+                </mat-select>
+                <em *ngIf="validateControl('department') && hasError('department', 'required')" class="error-message">Department is required</em>
+            </div>
+        </div>
+
+        <div mat-dialog-actions class="mb-3 row justify-content-center">
+            <button type="submit" mat-button class="submit-button" [disabled]="!employeeFormGroup.valid">Save</button>
+        </div>
+    </form>
+</div>

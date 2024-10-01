@@ -7,6 +7,7 @@ public class EmployeeDto
 {
     public int Id { get; set; }
     public required string Name { get; set; }
+    public required string Surname { get; set; }
     public decimal Salary { get; set; }
     public required string ManagerName { get; set; }
     public required string DepartmentName { get; set; }

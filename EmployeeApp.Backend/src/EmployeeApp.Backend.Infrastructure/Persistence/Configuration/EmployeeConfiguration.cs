@@ -39,7 +39,7 @@ public class EmployeeConfiguration : IEntityTypeConfiguration<Employee>
 }
 
 [ExcludeFromCodeCoverage]
-public static class EmployeeConfigurationConstants
+file static class EmployeeConfigurationConstants
 {
     public const string TableName = "Employee";
     public const string IdName = "ID";

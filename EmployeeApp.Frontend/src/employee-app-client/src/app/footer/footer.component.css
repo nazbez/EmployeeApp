@@ -1,0 +1,10 @@
+footer .text-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+footer .text-center a {
+    margin-left: 5px;
+}

@@ -19,7 +19,19 @@ var configuration = builder.Configuration;
 builder.Host.UseSerilog((context, config) =>
     config.ReadFrom.Configuration(context.Configuration));
 
+var allowOriginsPolicy = "_employeeAllowSpecificOrigins";
+
 // Add services to the container.
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(allowOriginsPolicy,
+        policy =>
+        {
+            policy.AllowAnyOrigin()
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        });
+});
 builder.Services.AddControllers();
 builder.Services.AddAutoMapper(assembly);
 builder.Services.AddAppCore(configuration);
@@ -41,6 +53,7 @@ if (app.Environment.IsDevelopment())
 app.UseSerilogRequestLogging();
 
 app.UseHttpsRedirection();
+app.UseCors(allowOriginsPolicy);
 
 app.UseFluentValidationExceptionHandler();
 

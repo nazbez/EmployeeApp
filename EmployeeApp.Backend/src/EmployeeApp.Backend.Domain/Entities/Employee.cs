@@ -6,7 +6,7 @@ namespace EmployeeApp.Backend.Domain.Entities;
 public class Employee
 {
     public int Id { get; set; }
-    public required string Name { get; set; }
+    public string Name { get; set; } = string.Empty;
     public decimal Salary { get; set; }
     public int DepartmentId { get; set; }
     public int ManagerId { get; set; }

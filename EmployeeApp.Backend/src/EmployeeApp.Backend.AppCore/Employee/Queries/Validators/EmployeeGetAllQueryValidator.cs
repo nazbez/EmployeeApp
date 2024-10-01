@@ -1,7 +1,9 @@
 ﻿using FluentValidation;
+using System.Diagnostics.CodeAnalysis;
 
 namespace EmployeeApp.Backend.AppCore.Employee.Queries.Validators;
 
+[ExcludeFromCodeCoverage]
 public class EmployeeGetAllQueryValidator : AbstractValidator<EmployeeGetAllQuery>
 {
     public EmployeeGetAllQueryValidator()

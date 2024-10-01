@@ -1,0 +1,137 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Provide sufficient contrast against white background */
+
+/* @import '@angular/material/prebuilt-themes/azure-blue.css'; */
+
+a {
+    color: #0366d6;
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+code {
+    color: #e01a76;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+h1 {
+    color: red;
+}
+
+.close.mat-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5px;
+    line-height: 14px;
+    min-width: auto;
+    float: right
+}
+
+body {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    flex-direction: column;
+    justify-content:start;
+    font-family: Roboto, sans-serif !important;
+}
+
+.text-medium {
+    font-size: 16px
+}
+
+.p-link {
+    text-decoration: none;
+    color: #6F42C1 !important
+}
+
+.p-link:hover {
+    cursor: pointer;
+    color: #56329A !important
+}
+
+.nav-link:hover, .table-link:hover {
+    cursor: pointer;
+    color: #6F42C1 !important
+}
+
+.w-5 {
+    width: 5% !important
+}
+
+.w-10 {
+    width: 10% !important
+}
+
+.w-15 {
+    width: 15% !important
+}
+
+.w-30 {
+    width: 30% !important
+}
+
+.w-40 {
+    width: 40% !important
+}
+
+.w-50 {
+    width: 50% !important
+}
+
+.position-relative {
+    position: relative !important;
+}
+
+.close-button-box {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.h-48 {
+    height: 48px !important
+}
+
+.mt-6 {
+    margin-top: 3rem !important
+}
+
+.mb-5 {
+    margin-bottom: 2rem !important
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #6F42C1;
+    border-color: #6F42C1;
+}
+
+.btn-primary:hover {
+    background-color: #56329A;
+    border-color: #56329A;
+}
+
+.btn:disabled {
+    background-color: #E1D8F2 !important;
+    border-color: #E1D8F2 !important;
+    color: #4A4554 !important;
+}
+
+.mat-expansion-panel-body {
+    padding: 0 24px 0 !important
+}
+
+.mat-content.mat-content-hide-toggle {
+    margin-right: 0 !important
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

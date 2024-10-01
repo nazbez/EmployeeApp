@@ -3,7 +3,7 @@
 namespace EmployeeApp.Backend.API.Infrastructure.Models.Employee;
 
 [ExcludeFromCodeCoverage]
-public class PaginatedEmployeeListResponse
+public class PaginatedEmployeeListResponseModel
 {
     public IReadOnlyCollection<EmployeeVm> Items { get; set; } = [];
     public int PageNumber { get; set; }

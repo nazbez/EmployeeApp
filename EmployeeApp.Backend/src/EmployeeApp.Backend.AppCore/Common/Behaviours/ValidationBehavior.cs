@@ -1,9 +1,11 @@
 ﻿using FluentValidation;
 using MediatR;
+using System.Diagnostics.CodeAnalysis;
 using ValidationException = FluentValidation.ValidationException;
 
 namespace EmployeeApp.Backend.AppCore.Common.Behaviours;
 
+[ExcludeFromCodeCoverage]
 public class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     where TRequest : IRequest<TResponse>
 {
@@ -14,11 +16,11 @@ public class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TReques
         this.validators = validators;
     }
 
-    public Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
+    public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
     {
         var context = new ValidationContext<TRequest>(request);
 
-        var failures = validators.Select(x => x.Validate(context))
+        var failures = (await Task.WhenAll(validators.Select(x => x.ValidateAsync(context))))
             .SelectMany(x => x.Errors)
             .Where(x => x != null)
             .ToList();
@@ -28,6 +30,6 @@ public class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TReques
             throw new ValidationException(failures);
         }
 
-        return next();
+        return await next();
     }
 }

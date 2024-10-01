@@ -1,9 +1,9 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace EmployeeApp.Backend.API.Infrastructure.Models.Department;
+namespace EmployeeApp.Backend.AppCore.Common.Models.Employee;
 
 [ExcludeFromCodeCoverage]
-public class DepartmentVm
+public class ManagerDto
 {
     public int Id { get; set; }
     public required string Name { get; set; }

@@ -22,7 +22,7 @@ public class DepartmentConfiguration : IEntityTypeConfiguration<Department>
 }
 
 [ExcludeFromCodeCoverage]
-public static class DepartmentConfigurationConstants
+file static class DepartmentConfigurationConstants
 {
     public const string TableName = "Department";
     public const string IdName = "ID";

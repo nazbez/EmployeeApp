@@ -13,8 +13,13 @@ public class DepartmentRepository : IDepartmentRepository
         this.applicationDbContext = applicationDbContext;
     }
 
-    public Task<List<DepartmentEntity>> GetAll()
+    public Task<List<DepartmentEntity>> GetAllAsync()
     {
         return applicationDbContext.Departments.AsNoTracking().ToListAsync();
+    }
+
+    public Task<bool> ExistsAsync(int id)
+    {
+        return applicationDbContext.Departments.AnyAsync(x => x.Id == id);
     }
 }
