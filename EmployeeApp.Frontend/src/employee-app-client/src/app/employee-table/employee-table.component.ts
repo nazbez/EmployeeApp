@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
 import { ManageEmployeeModalComponent } from '../manage-employee-modal/manage-employee-modal.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-employee-table',
@@ -49,11 +50,55 @@ export class EmployeeTableComponent implements OnInit {
 
   constructor(
     private readonly employeeService: EmployeeService,
+    private readonly toastr: ToastrService,
     private readonly dialog: MatDialog) {}
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
 
+    this.handleUpdate();
+  }
+
+  ngOnInit(): void { }
+
+  getTableData$(pageNumber: number, pageSize: number): Observable<PaginatedEmployeeListResponseModel> {
+    return this.employeeService.getAll(pageNumber, pageSize);
+  }
+
+  updateEmployee(id: number) {
+    const dialogRef = this.dialog.open(ManageEmployeeModalComponent, {
+      width: '600px',
+      data: id
+    });
+
+    dialogRef.afterClosed()
+    .subscribe(() => 
+      this.handleUpdate());
+}
+
+deleteEmployee(id: number) {
+  const dialogRef = this.dialog.open(ConfirmationModalComponent, {
+    width: '400px',
+    height: '200px',
+    data: 'Delete employee'
+  });
+  
+  dialogRef.afterClosed().subscribe(res => {
+    if (res) {
+        this.employeeService.delete(id)
+            .subscribe({
+              next: _=> {
+                this.handleUpdate();
+              },
+              error: (error) => {
+                this.toastr.error(error.error[0]['ErrorMessage'], 'Error!')
+              }
+            });
+          }
+        });
+  }
+
+  private handleUpdate() {
     this.paginator.page
       .pipe(
         startWith({}),
@@ -76,35 +121,5 @@ export class EmployeeTableComponent implements OnInit {
         this.dataSource = new MatTableDataSource(this.employees);
       });
   }
-
-  ngOnInit(): void { }
-
-  getTableData$(pageNumber: number, pageSize: number): Observable<PaginatedEmployeeListResponseModel> {
-    return this.employeeService.getAll(pageNumber, pageSize);
-  }
-
-  updateEmployee(id: number) {
-    const dialogRef = this.dialog.open(ManageEmployeeModalComponent, {
-      width: '600px',
-      data: id
-    });
-}
-
-deleteEmployee(id: number) {
-  const dialogRef = this.dialog.open(ConfirmationModalComponent, {
-    width: '400px',
-    height: '200px',
-    data: 'Delete employee'
-  });
-  
-  dialogRef.afterClosed().subscribe(res => {
-    if (res) {
-        this.employeeService.delete(id)
-            .subscribe(_ => {
-                this.dataSource.data = this.dataSource.data.filter(x => x.id !== id);
-            })
-          }
-        });
-      }
 }
 

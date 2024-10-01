@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { ManageEmployeeModalComponent } from '../manage-employee-modal/manage-employee-modal.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-create-employee-button',
@@ -11,7 +12,9 @@ import { ManageEmployeeModalComponent } from '../manage-employee-modal/manage-em
   styleUrl: './create-employee-button.component.css'
 })
 export class CreateEmployeeButtonComponent {
-  constructor(private readonly dialog: MatDialog) {}
+  constructor(
+    private readonly dialog: MatDialog,
+    private readonly toastr: ToastrService) {}
 
   createNewEmployee(): void {
     const dialogRef = this.dialog.open(ManageEmployeeModalComponent, {

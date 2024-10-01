@@ -18,7 +18,7 @@ public class EmployeeDeleteCommandValidator : AbstractValidator<EmployeeDeleteCo
             {
                 RuleFor(cmd => cmd.Id)
                     .MustAsync(async (id, _) => !(await employeeRepository.IsManagerAsync(id)))
-                    .WithMessage(cmd => $"Employe with id = {cmd.Id} is manager. Cannot be deleted");
+                    .WithMessage(cmd => $"Employe is manager");
             });
     }
 }

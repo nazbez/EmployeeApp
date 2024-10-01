@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule, MatIconButton } from '@angular/material/button';
 import { EmployeeDataResponseModel } from '../shared/models/employee-data-response.model';
 import { EmployeeUpsertRequestModel } from '../shared/models/employee-upsert-request.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-manage-employee-modal',
@@ -39,7 +40,8 @@ export class ManageEmployeeModalComponent implements OnInit {
 
   constructor(
     private readonly employeeService: EmployeeService,
-    public dialogRef: MatDialogRef<ManageEmployeeModalComponent>,
+    private dialogRef: MatDialogRef<ManageEmployeeModalComponent>,
+    private readonly toastr: ToastrService,
     @Inject(MAT_DIALOG_DATA) public employeeId: number) { }
 
   ngOnInit(): void {
@@ -103,8 +105,10 @@ export class ManageEmployeeModalComponent implements OnInit {
     };
 
     this.employeeService.update(this.employeeId, upsertRequest)
-      .subscribe(res => 
-        this.dialogRef.close(res))
+      .subscribe(res => {
+        this.toastr.success('Employee is added!', 'Success!');
+        this.dialogRef.close(res);
+      });
   }
 
   private createEmployee(value: any) {
@@ -118,7 +122,9 @@ export class ManageEmployeeModalComponent implements OnInit {
     };
 
     this.employeeService.create(upsertRequest)
-      .subscribe(res => 
-        this.dialogRef.close(res))
+      .subscribe(res => {
+        this.toastr.success('Employee is added!', 'Success!');
+        this.dialogRef.close(res);
+      });
   }
 }
