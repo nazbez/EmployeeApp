@@ -12,7 +12,8 @@ var assembly = Assembly.GetExecutingAssembly();
 builder.Configuration
     .AddJsonFile("Configs/appsettings.json", optional: true)
     .AddJsonFile($"Configs/appsettings.{environment}.json", reloadOnChange: true, optional: false)
-    .AddUserSecrets(assembly, reloadOnChange: true, optional: false);
+    .AddEnvironmentVariables();
+    // .AddUserSecrets(assembly, reloadOnChange: true, optional: false);
 
 var configuration = builder.Configuration;
 
