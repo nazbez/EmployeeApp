@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Diagnostics.CodeAnalysis;
+using Config = EmployeeApp.Backend.Infrastructure.Configuration.ConfigurationExtensions;
 
 namespace EmployeeApp.Backend.Infrastructure;
 
@@ -13,7 +14,7 @@ public static class InfrastructureInjectModule
 {
     public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-        var connectionString = configuration.GetConnectionString("Sql");
+        var connectionString = Config.GetConnectionString(configuration);
 
         services.AddDbContext<ApplicationDbContext>(options => 
             options.UseSqlServer(connectionString));

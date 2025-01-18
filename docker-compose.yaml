@@ -1,0 +1,47 @@
+version: "4"
+name: employee_app
+
+services:
+  api:
+    build:
+      context: ./EmployeeApp.Backend/src/.
+      dockerfile: EmployeeApp.Backend.API/Dockerfile
+    image: api
+    container_name: api
+    ports: 
+      - 5050:8080
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__SqlFile=/run/secrets/sql_connection_string
+    secrets:
+      - sql_connection_string
+
+  client:
+    build:
+      context: ./EmployeeApp.Frontend/src/employee-app-client/.
+    image: client
+    container_name: client
+    ports:
+      - 4201:4200
+    
+  database:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: database
+    ports:
+      - 1434:1433
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=/run/secrets/db_password
+    secrets:
+      - db_password
+    volumes:
+      - sqldb_data:/var/opt/mssql
+
+secrets:
+  db_password:
+    file: ./secrets/db_password.txt
+  sql_connection_string:
+    file: ./secrets/sql_connection_string.txt
+
+volumes:
+  sqldb_data:
